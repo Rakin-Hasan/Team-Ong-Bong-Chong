@@ -122,14 +122,15 @@ def _parse_sections(text: str) -> dict[str, str]:
                 sections[current_section].append(line.strip())
 
     # Build final dictionary preserving section order
-    result = {}
+    res = {}
     for section in list(section_order) + ["other"]:
         if section != "other" and sections[section]:
-            result[section] = "\n".join(sections[section])
+            res[section] = "\n".join(sections[section])
         elif section == "other" and sections["other"]:
-            result["other"] = "\n".join(sections["other"])
+            res["other"] = "\n".join(sections["other"])
 
-    return result
+    return res
+
 
 
 # -----------------------------------------------------------------------------
